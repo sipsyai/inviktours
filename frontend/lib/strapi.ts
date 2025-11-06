@@ -103,6 +103,7 @@ export async function getTourBySlug(slug: string): Promise<Tour | null> {
             images: true,
             tripAttributes: true,
             tripInfo: true,
+            requirements: true,
             itinerary: {
               populate: {
                 activities: true,
@@ -202,7 +203,11 @@ export async function getGlobalSettings(): Promise<Global | null> {
     '/global',
     { next: { revalidate: 3600 } }, // Cache for 1 hour
     {
-      populate: '*',
+      populate: {
+        logo: true,
+        navigationLinks: true,
+        bookingButtonSettings: true,
+      },
     }
   );
 
@@ -270,7 +275,23 @@ export async function getHomeContent(): Promise<Home | null> {
     {
       populate: {
         contentSections: {
-          populate: '*',
+          on: {
+            'home.hero-section': {
+              populate: ['backgroundImage', 'heroVideo'],
+            },
+            'home.stats-section': {
+              populate: ['stats'],
+            },
+            'home.featured-tours-section': {
+              populate: '*',
+            },
+            'home.features-section': {
+              populate: ['features'],
+            },
+            'home.cta-section': {
+              populate: '*',
+            },
+          },
         },
       },
     }
@@ -339,6 +360,7 @@ export async function getAdventureBySlug(slug: string): Promise<Adventure | null
         images: true,
         tripAttributes: true,
         tripInfo: true,
+        requirements: true,
         itinerary: {
           populate: {
             activities: true,

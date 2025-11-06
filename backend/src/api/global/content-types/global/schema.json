@@ -42,6 +42,11 @@
     "footerText": {
       "type": "string",
       "default": "© 2025 Inviktours. Tüm hakları saklıdır."
+    },
+    "bookingButtonSettings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.booking-button-settings"
     }
   }
 }

@@ -174,6 +174,21 @@ export interface AdventurePricingSection extends Struct.ComponentSchema {
   };
 }
 
+export interface AdventureRequirements extends Struct.ComponentSchema {
+  collectionName: 'components_adventure_requirements';
+  info: {
+    description: 'Tour participation requirements and prerequisites';
+    displayName: 'Requirements';
+  };
+  attributes: {
+    equipment: Schema.Attribute.RichText;
+    experienceLevel: Schema.Attribute.RichText;
+    healthRequirements: Schema.Attribute.RichText;
+    importantNotes: Schema.Attribute.RichText;
+    physicalRequirements: Schema.Attribute.RichText;
+  };
+}
+
 export interface AdventureTimelineItem extends Struct.ComponentSchema {
   collectionName: 'components_adventure_timeline_items';
   info: {
@@ -237,6 +252,24 @@ export interface AdventureTripInfo extends Struct.ComponentSchema {
     ageRequirement: Schema.Attribute.Text & Schema.Attribute.Required;
     visaLink: Schema.Attribute.String;
     visaRequirement: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface GlobalBookingButtonSettings extends Struct.ComponentSchema {
+  collectionName: 'components_global_booking_button_settings';
+  info: {
+    description: 'Floating booking button configuration';
+    displayName: 'Booking Button Settings';
+  };
+  attributes: {
+    buttonIcon: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'calendar_month'>;
+    buttonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Rezervasyon Yap'>;
+    enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    position: Schema.Attribute.Enumeration<['bottom-right', 'bottom-left']> &
+      Schema.Attribute.DefaultTo<'bottom-right'>;
+    showOnMobile: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -323,12 +356,23 @@ export interface HomeHeroSection extends Struct.ComponentSchema {
     displayName: 'Hero Section';
   };
   attributes: {
+    backgroundImage: Schema.Attribute.Media<'images'>;
     badgeIcon: Schema.Attribute.String & Schema.Attribute.DefaultTo<'eco'>;
     badgeText: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Do\u011Fa ile B\u00FCt\u00FCnle\u015Fin'>;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroVideo: Schema.Attribute.Media<'videos'>;
     highlightedText: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Yolculuklar'>;
+    overlayOpacity: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<50>;
     primaryButtonIcon: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'arrow_forward'>;
     primaryButtonText: Schema.Attribute.String &
@@ -572,10 +616,12 @@ declare module '@strapi/strapi' {
       'adventure.itinerary-day': AdventureItineraryDay;
       'adventure.pricing-item': AdventurePricingItem;
       'adventure.pricing-section': AdventurePricingSection;
+      'adventure.requirements': AdventureRequirements;
       'adventure.timeline-item': AdventureTimelineItem;
       'adventure.timeline-section': AdventureTimelineSection;
       'adventure.trip-attributes': AdventureTripAttributes;
       'adventure.trip-info': AdventureTripInfo;
+      'global.booking-button-settings': GlobalBookingButtonSettings;
       'home.cta-section': HomeCtaSection;
       'home.feature-item': HomeFeatureItem;
       'home.featured-tours-section': HomeFeaturedToursSection;

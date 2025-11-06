@@ -1,4 +1,4 @@
-import { StrapiSingleResponse } from './tour';
+import { StrapiSingleResponse, StrapiMedia } from './tour';
 
 export interface HeroSection {
   id: number;
@@ -8,6 +8,9 @@ export interface HeroSection {
   title: string;
   highlightedText: string;
   description: string;
+  backgroundImage?: StrapiMedia;
+  heroVideo?: StrapiMedia;
+  overlayOpacity?: number;
   primaryButtonText: string;
   primaryButtonUrl: string;
   primaryButtonIcon: string;

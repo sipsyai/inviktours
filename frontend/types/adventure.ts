@@ -68,6 +68,15 @@ export interface TripInfo {
   visaLink?: string;
 }
 
+export interface Requirements {
+  id: number;
+  physicalRequirements?: string;
+  equipment?: string;
+  healthRequirements?: string;
+  experienceLevel?: string;
+  importantNotes?: string;
+}
+
 export interface ItineraryActivity {
   id: number;
   name: string;
@@ -169,6 +178,7 @@ export interface Adventure {
   images?: StrapiMedia[];
   tripAttributes?: TripAttributes;
   tripInfo?: TripInfo;
+  requirements?: Requirements;
   itinerary?: ItineraryDay[];
   contentSections?: ContentSection[];
   publishedAt: string;

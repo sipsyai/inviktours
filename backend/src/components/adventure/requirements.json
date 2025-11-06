@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_adventure_requirements",
+  "info": {
+    "displayName": "Requirements",
+    "description": "Tour participation requirements and prerequisites"
+  },
+  "options": {},
+  "attributes": {
+    "physicalRequirements": {
+      "type": "richtext",
+      "required": false
+    },
+    "equipment": {
+      "type": "richtext",
+      "required": false
+    },
+    "healthRequirements": {
+      "type": "richtext",
+      "required": false
+    },
+    "experienceLevel": {
+      "type": "richtext",
+      "required": false
+    },
+    "importantNotes": {
+      "type": "richtext",
+      "required": false
+    }
+  }
+}

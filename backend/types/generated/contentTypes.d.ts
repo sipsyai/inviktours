@@ -468,6 +468,7 @@ export interface ApiAdventureAdventure extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     mainImage: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
+    requirements: Schema.Attribute.Component<'adventure.requirements', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     startLocation: Schema.Attribute.String;
     subtitle: Schema.Attribute.String;
@@ -496,6 +497,10 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    bookingButtonSettings: Schema.Attribute.Component<
+      'global.booking-button-settings',
+      false
+    >;
     contactButtonText: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'\u0130leti\u015Fim'>;
     contactButtonUrl: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#'>;

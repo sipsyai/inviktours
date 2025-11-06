@@ -211,6 +211,16 @@ export interface NavigationLink {
   order: number;
 }
 
+// Booking Button Settings type
+export interface BookingButtonSettings {
+  id: number;
+  enabled: boolean;
+  buttonText: string;
+  buttonIcon: string;
+  position: 'bottom-right' | 'bottom-left';
+  showOnMobile: boolean;
+}
+
 // Global settings type
 export interface Global {
   id: number;
@@ -222,6 +232,7 @@ export interface Global {
   contactButtonText: string;
   contactButtonUrl: string;
   footerText: string;
+  bookingButtonSettings?: BookingButtonSettings;
 }
 
 // Tour card type (simplified for listing)

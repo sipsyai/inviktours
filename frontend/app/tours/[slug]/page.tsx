@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getTourBySlug } from '@/lib/strapi';
+import { getTourBySlug, getGlobalSettings } from '@/lib/strapi';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ContentRenderer from '@/components/tour/ContentRenderer';
 import AdventureDetailLayout from '@/components/adventure/AdventureDetailLayout';
+import TourBookingWrapper from '@/components/tour/TourBookingWrapper';
 import type { Adventure } from '@/types/adventure';
 
 // Enable ISR with revalidation
@@ -35,16 +36,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function TourPage({ params }: PageProps) {
   const { slug } = await params;
   const tour = await getTourBySlug(slug);
+  const globalSettings = await getGlobalSettings();
 
   if (!tour || !tour.contentSections) {
     notFound();
   }
 
   return (
-    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-      <div className="layout-container flex h-full grow flex-col">
-        <Navbar />
-        <main>
+    <div className="relative flex h-auto min-h-screen w-full flex-col">
+      <Navbar />
+      <main className="flex-1">
           {/* Tour Content Sections */}
           <ContentRenderer sections={tour.contentSections} />
 
@@ -120,7 +121,12 @@ export default async function TourPage({ params }: PageProps) {
           )}
         </main>
         <Footer />
-      </div>
+
+        {/* Floating Booking Button & Modal */}
+        <TourBookingWrapper
+          tour={tour}
+          bookingSettings={globalSettings?.bookingButtonSettings}
+        />
     </div>
   );
 }

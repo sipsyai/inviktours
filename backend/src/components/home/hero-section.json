@@ -26,6 +26,24 @@
       "type": "text",
       "required": true
     },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "heroVideo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
+    },
+    "overlayOpacity": {
+      "type": "integer",
+      "default": 50,
+      "min": 0,
+      "max": 100
+    },
     "primaryButtonText": {
       "type": "string",
       "default": "Turları Keşfet"

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_global_booking_button_settings",
+  "info": {
+    "displayName": "Booking Button Settings",
+    "description": "Floating booking button configuration"
+  },
+  "options": {},
+  "attributes": {
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Rezervasyon Yap"
+    },
+    "buttonIcon": {
+      "type": "string",
+      "default": "calendar_month"
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": ["bottom-right", "bottom-left"],
+      "default": "bottom-right"
+    },
+    "showOnMobile": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
