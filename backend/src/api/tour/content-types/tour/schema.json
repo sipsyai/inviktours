@@ -47,12 +47,6 @@
     },
     "title": {
       "type": "string"
-    },
-    "video": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["videos"]
     }
   }
 }

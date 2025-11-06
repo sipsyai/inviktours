@@ -72,6 +72,12 @@
       "target": "api::tour.tour",
       "mappedBy": "adventure"
     },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
+    },
     "contentSections": {
       "type": "dynamiczone",
       "components": [

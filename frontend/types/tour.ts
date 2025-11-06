@@ -161,6 +161,7 @@ export interface TourAdventure {
     accommodation?: string;
     accommodationDetails?: string;
   }>;
+  video?: StrapiMedia;
   contentSections?: Array<{
     id: number;
     __component: string;
@@ -178,7 +179,6 @@ export interface Tour {
   endDate?: string;
   price?: number;
   currency?: string;
-  video?: StrapiMedia;
   contentSections?: ContentSection[];
   publishedAt: string;
   createdAt: string;

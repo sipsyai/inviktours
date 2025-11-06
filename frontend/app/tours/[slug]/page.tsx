@@ -51,7 +51,7 @@ export default async function TourPage({ params }: PageProps) {
           <ContentRenderer sections={tour.contentSections} />
 
           {/* Video Player (Shorts Format) */}
-          {tour.video && <ShortsVideoPlayer video={tour.video} />}
+          {tour.adventure?.video && <ShortsVideoPlayer video={tour.adventure.video} />}
 
           {/* Adventure Full Details */}
           {tour.adventure && (

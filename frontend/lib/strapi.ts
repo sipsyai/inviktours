@@ -97,11 +97,11 @@ export async function getTourBySlug(slug: string): Promise<Tour | null> {
         },
       },
       populate: {
-        video: true,
         adventure: {
           populate: {
             mainImage: true,
             images: true,
+            video: true,
             tripAttributes: true,
             tripInfo: true,
             requirements: true,
