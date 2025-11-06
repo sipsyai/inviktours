@@ -178,6 +178,7 @@ export interface Tour {
   endDate?: string;
   price?: number;
   currency?: string;
+  video?: StrapiMedia;
   contentSections?: ContentSection[];
   publishedAt: string;
   createdAt: string;

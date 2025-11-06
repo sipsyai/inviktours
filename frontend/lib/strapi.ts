@@ -97,6 +97,7 @@ export async function getTourBySlug(slug: string): Promise<Tour | null> {
         },
       },
       populate: {
+        video: true,
         adventure: {
           populate: {
             mainImage: true,

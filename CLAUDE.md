@@ -37,7 +37,7 @@ The application has a two-level content structure:
 1. **Adventure** (`api::adventure.adventure`) - The template/blueprint
    - Represents a specific adventure type (e.g., "Mount Ararat Climb")
    - Contains static information: title, subtitle, description, images, itinerary
-   - Has components: tripAttributes, tripInfo, itinerary days
+   - Has components: tripAttributes, tripInfo, requirements, itinerary days
    - Uses dynamic contentSections (hero, info-cards, timeline, gallery, pricing, contact-form)
    - One adventure can have many tours
 
@@ -63,6 +63,7 @@ Both Adventures and Tours use a dynamic zone pattern with reusable components:
 - `itinerary-day` - Day-by-day itinerary with activities
 - `trip-attributes` - Adventure attributes
 - `trip-info` - Trip metadata
+- `requirements` - Requirements and booking info
 
 **Tour Components** (`backend/src/components/tour/`):
 - Similar set of sections (hero, info-cards, timeline, gallery, pricing, contact-form)
@@ -168,8 +169,11 @@ See `frontend/lib/strapi.ts` for complete population examples.
 
 ### Backend (Strapi Cloud)
 1. Link GitHub repo, select `backend` directory
-2. Set environment variables (all secrets)
+2. Set environment variables (all secrets - use `node -e "console.log(require('crypto').randomBytes(16).toString('base64'))"` to generate)
 3. Strapi Cloud auto-provisions PostgreSQL
+4. After deployment, configure public permissions in Strapi Admin:
+   - Settings → Users & Permissions → Roles → Public
+   - Enable: Tour (find, findOne), Adventure (find, findOne), Global (find), Home (find), Upload (find, findOne)
 
 ### Frontend (Vercel)
 1. Import GitHub repo
@@ -182,3 +186,9 @@ See `frontend/lib/strapi.ts` for complete population examples.
 - **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS 4
 - **Backend**: Strapi 5, SQLite (dev), PostgreSQL (prod)
 - **Deployment**: Vercel (frontend), Strapi Cloud (backend)
+
+## Language and Content
+
+- All UI content and admin panel are in **Turkish**
+- Content types use English field names but display Turkish labels in the admin
+- When creating or modifying content, ensure all user-facing text is in Turkish
