@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-11-07T08:13:56.032Z"
+    "x-generation-date": "2025-11-07T20:37:36.765Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -291,7 +291,7 @@
         }
       }
     },
-    "/adventures/{documentId}": {
+    "/adventures/{id}": {
       "get": {
         "responses": {
           "200": {
@@ -360,7 +360,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -370,7 +370,7 @@
             }
           }
         ],
-        "operationId": "get/adventures/{documentId}"
+        "operationId": "get/adventures/{id}"
       },
       "put": {
         "responses": {
@@ -440,7 +440,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -450,7 +450,7 @@
             }
           }
         ],
-        "operationId": "put/adventures/{documentId}",
+        "operationId": "put/adventures/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -531,7 +531,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -541,7 +541,7 @@
             }
           }
         ],
-        "operationId": "delete/adventures/{documentId}"
+        "operationId": "delete/adventures/{id}"
       }
     },
     "/global": {
@@ -795,6 +795,76 @@
             }
           }
         }
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Global"
+        ],
+        "parameters": [],
+        "operationId": "delete/global"
       }
     },
     "/home": {
@@ -1048,6 +1118,76 @@
             }
           }
         }
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Home"
+        ],
+        "parameters": [],
+        "operationId": "delete/home"
       }
     },
     "/tours": {
@@ -1303,7 +1443,7 @@
         }
       }
     },
-    "/tours/{documentId}": {
+    "/tours/{id}": {
       "get": {
         "responses": {
           "200": {
@@ -1372,7 +1512,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -1382,7 +1522,7 @@
             }
           }
         ],
-        "operationId": "get/tours/{documentId}"
+        "operationId": "get/tours/{id}"
       },
       "put": {
         "responses": {
@@ -1452,7 +1592,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -1462,7 +1602,7 @@
             }
           }
         ],
-        "operationId": "put/tours/{documentId}",
+        "operationId": "put/tours/{id}",
         "requestBody": {
           "required": true,
           "content": {
@@ -1543,7 +1683,7 @@
         ],
         "parameters": [
           {
-            "name": "documentId",
+            "name": "id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -1553,7 +1693,7 @@
             }
           }
         ],
-        "operationId": "delete/tours/{documentId}"
+        "operationId": "delete/tours/{id}"
       }
     },
     "/upload": {

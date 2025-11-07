@@ -1,14 +1,3 @@
-export default {
-  routes: [
-    {
-      method: 'GET',
-      path: '/global',
-      handler: 'global.find',
-    },
-    {
-      method: 'PUT',
-      path: '/global',
-      handler: 'global.update',
-    },
-  ],
-};
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreRouter('api::global.global');

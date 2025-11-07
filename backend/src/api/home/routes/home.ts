@@ -1,14 +1,3 @@
-export default {
-  routes: [
-    {
-      method: 'GET',
-      path: '/home',
-      handler: 'home.find',
-    },
-    {
-      method: 'PUT',
-      path: '/home',
-      handler: 'home.update',
-    },
-  ],
-};
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreRouter('api::home.home');
