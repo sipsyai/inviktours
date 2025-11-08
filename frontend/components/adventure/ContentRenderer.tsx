@@ -10,32 +10,36 @@ const PricingSection = dynamic(() => import('./PricingSection'));
 const ContactFormSection = dynamic(() => import('./ContactFormSection'));
 
 interface ContentRendererProps {
-  sections: ContentSection[];
+  sections?: ContentSection[];
+  section?: ContentSection;
 }
 
-export default function ContentRenderer({ sections }: ContentRendererProps) {
-  if (!sections || sections.length === 0) {
+export default function ContentRenderer({ sections, section }: ContentRendererProps) {
+  // Support both single section and array of sections
+  const sectionsArray = section ? [section] : sections;
+
+  if (!sectionsArray || sectionsArray.length === 0) {
     return null;
   }
 
   return (
     <>
-      {sections.map((section) => {
-        switch (section.__component) {
+      {sectionsArray.map((item) => {
+        switch (item.__component) {
           case 'adventure.hero-section':
-            return <HeroSection key={section.id} data={section} />;
+            return <HeroSection key={item.id} data={item} />;
           case 'adventure.info-cards-section':
-            return <InfoCardsSection key={section.id} data={section} />;
+            return <InfoCardsSection key={item.id} data={item} />;
           case 'adventure.timeline-section':
-            return <TimelineSection key={section.id} data={section} />;
+            return <TimelineSection key={item.id} data={item} />;
           case 'adventure.gallery-section':
-            return <GallerySection key={section.id} data={section} />;
+            return <GallerySection key={item.id} data={item} />;
           case 'adventure.pricing-section':
-            return <PricingSection key={section.id} data={section} />;
+            return <PricingSection key={item.id} data={item} />;
           case 'adventure.contact-form-section':
-            return <ContactFormSection key={section.id} data={section} />;
+            return <ContactFormSection key={item.id} data={item} />;
           default:
-            console.warn(`Unknown component type: ${(section as { __component?: string }).__component}`);
+            console.warn(`Unknown component type: ${(item as { __component?: string }).__component}`);
             return null;
         }
       })}

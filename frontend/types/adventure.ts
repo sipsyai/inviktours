@@ -137,6 +137,8 @@ export interface PricingSection {
   excludedTitle: string;
   includedItems: PricingItem[];
   excludedItems: PricingItem[];
+  noteTitle?: string;
+  note?: string;
   price: number;
   currency: string;
   priceLabel: string;

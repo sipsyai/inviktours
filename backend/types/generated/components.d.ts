@@ -159,8 +159,8 @@ export interface AdventurePricingItem extends Struct.ComponentSchema {
 export interface AdventurePricingSection extends Struct.ComponentSchema {
   collectionName: 'components_adventure_pricing_sections';
   info: {
-    description: 'Adventure pricing and included/excluded items';
-    displayName: 'Pricing Section';
+    description: 'Adventure pricing, costs, and included/excluded items with notes';
+    displayName: 'Maliyet & Fiyatland\u0131rma';
   };
   attributes: {
     excludedItems: Schema.Attribute.Component<'adventure.pricing-item', true>;
@@ -169,6 +169,9 @@ export interface AdventurePricingSection extends Struct.ComponentSchema {
     includedItems: Schema.Attribute.Component<'adventure.pricing-item', true>;
     includedTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Fiyata Dahil Olanlar'>;
+    note: Schema.Attribute.RichText;
+    noteTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u00D6nemli Bilgiler'>;
     title: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Fiyatland\u0131rma'>;
   };

@@ -7,12 +7,13 @@ import { getStrapiMediaUrl } from '@/lib/strapi';
 import OverviewTab from './OverviewTab';
 import ItineraryTab from './ItineraryTab';
 import RequirementsSection from './RequirementsSection';
+import ContentRenderer from './ContentRenderer';
 
 interface AdventureDetailLayoutProps {
   adventure: Adventure;
 }
 
-type Section = 'overview' | 'itinerary' | 'requirements';
+type Section = 'overview' | 'itinerary' | 'requirements' | 'pricing';
 
 export default function AdventureDetailLayout({ adventure }: AdventureDetailLayoutProps) {
   const [activeSection, setActiveSection] = useState<Section>('overview');
@@ -36,7 +37,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections: Section[] = ['overview', 'itinerary', 'requirements'];
+      const sections: Section[] = ['overview', 'itinerary', 'requirements', 'pricing'];
       // Account for navbar + tab nav height
       const scrollPosition = window.scrollY + 180;
 
@@ -136,6 +137,18 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
                   Gereksinimler Kitabı
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('pricing')}
+                  className={`py-4 px-2 text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
+                    activeSection === 'pricing'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-[#638863] dark:text-gray-400 hover:text-[#111811] dark:hover:text-white'
+                  }`}
+                >
+                  Maliyet
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -158,6 +171,15 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
           <section id="requirements" className="scroll-mt-40">
             <RequirementsSection requirements={adventure.requirements} />
           </section>
+
+          {/* Pricing Section */}
+          {adventure.contentSections && adventure.contentSections.length > 0 && (
+            <section id="pricing" className="scroll-mt-40">
+              <ContentRenderer sections={adventure.contentSections.filter(
+                section => section.__component === 'adventure.pricing-section'
+              )} />
+            </section>
+          )}
         </div>
       </div>
     </>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Adventure } from '@/types/adventure';
 import { getStrapiMediaUrl } from '@/lib/strapi';
 import TripAttributesSection from './TripAttributesSection';
+import ContentRenderer from './ContentRenderer';
 
 interface OverviewTabProps {
   adventure: Adventure;
@@ -91,13 +92,19 @@ export default function OverviewTab({ adventure }: OverviewTabProps) {
         </div>
       )}
 
-      {/* Legacy Dynamic Sections */}
+      {/* Dynamic Content Sections (excluding pricing-section) */}
       {adventure.contentSections && adventure.contentSections.length > 0 && (
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
           <div className="text-sm text-[#638863] dark:text-gray-400 mb-4">
             Ek İçerikler
           </div>
-          {/* ContentRenderer can be imported and used here if needed */}
+          <div className="space-y-8">
+            {adventure.contentSections
+              .filter(section => section.__component !== 'adventure.pricing-section')
+              .map((section) => (
+                <ContentRenderer key={section.id} section={section} />
+              ))}
+          </div>
         </div>
       )}
     </div>

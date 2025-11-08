@@ -1,8 +1,8 @@
 {
   "collectionName": "components_adventure_pricing_sections",
   "info": {
-    "displayName": "Pricing Section",
-    "description": "Adventure pricing and included/excluded items"
+    "displayName": "Maliyet & Fiyatlandırma",
+    "description": "Adventure pricing, costs, and included/excluded items with notes"
   },
   "options": {},
   "attributes": {
@@ -27,6 +27,13 @@
       "type": "component",
       "component": "adventure.pricing-item",
       "repeatable": true
+    },
+    "noteTitle": {
+      "type": "string",
+      "default": "Önemli Bilgiler"
+    },
+    "note": {
+      "type": "richtext"
     }
   }
 }
