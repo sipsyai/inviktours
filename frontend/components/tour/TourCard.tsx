@@ -17,6 +17,33 @@ export default function TourCard({ tour }: TourCardProps) {
     });
   };
 
+  const formatDateRange = () => {
+    if (!tour.startDate || !tour.endDate) return null;
+
+    const start = new Date(tour.startDate);
+    const end = new Date(tour.endDate);
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const month = start.toLocaleDateString('tr-TR', { month: 'long' });
+    const year = start.getFullYear();
+
+    // Aynı ay içindeyse: "15-20 Haziran 2024"
+    if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+      return `${startDay}-${endDay} ${month} ${year}`;
+    }
+
+    // Farklı aylardaysa: "28 Haziran - 3 Temmuz 2024"
+    const endMonth = end.toLocaleDateString('tr-TR', { month: 'long' });
+    if (start.getFullYear() === end.getFullYear()) {
+      return `${startDay} ${month} - ${endDay} ${endMonth} ${year}`;
+    }
+
+    // Farklı yıllardaysa: "28 Aralık 2024 - 3 Ocak 2025"
+    const endYear = end.getFullYear();
+    return `${startDay} ${month} ${year} - ${endDay} ${endMonth} ${endYear}`;
+  };
+
   const calculateDuration = () => {
     if (!tour.startDate || !tour.endDate) return null;
     const start = new Date(tour.startDate);
@@ -52,7 +79,7 @@ export default function TourCard({ tour }: TourCardProps) {
         </Link>
 
         {/* Duration and Date in Single Row */}
-        {(duration || tour.startDate) && (
+        {(duration || formatDateRange()) && (
           <div className="flex items-center gap-4 text-sm mb-4 flex-wrap">
             {duration && (
               <div className="flex items-center gap-1.5 text-[#638863] dark:text-gray-400">
@@ -60,10 +87,10 @@ export default function TourCard({ tour }: TourCardProps) {
                 <span className="font-medium">{duration} Gün</span>
               </div>
             )}
-            {tour.startDate && (
+            {formatDateRange() && (
               <div className="flex items-center gap-1.5 text-[#638863] dark:text-gray-400">
                 <span className="material-symbols-outlined text-base">calendar_today</span>
-                <span className="font-medium">{formatDate(tour.startDate)}</span>
+                <span className="font-medium">{formatDateRange()}</span>
               </div>
             )}
           </div>

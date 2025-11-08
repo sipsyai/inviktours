@@ -7,6 +7,7 @@ import ContentRenderer from '@/components/tour/ContentRenderer';
 import AdventureDetailLayout from '@/components/adventure/AdventureDetailLayout';
 import TourBookingWrapper from '@/components/tour/TourBookingWrapper';
 import ShortsVideoPlayer from '@/components/tour/ShortsVideoPlayer';
+import TourDateHeader from '@/components/tour/TourDateHeader';
 import type { Adventure } from '@/types/adventure';
 
 // Enable ISR with revalidation
@@ -46,6 +47,10 @@ export default async function TourPage({ params }: PageProps) {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <Navbar />
+
+      {/* Tour Date Header - Sticky */}
+      <TourDateHeader tour={tour} />
+
       <main className="flex-1">
           {/* Tour Content Sections */}
           <ContentRenderer sections={tour.contentSections} />

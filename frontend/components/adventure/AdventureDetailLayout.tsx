@@ -22,8 +22,8 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
   const scrollToSection = (sectionId: Section) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Navbar height (~60-64px) + Tab navigation height (~68px) = ~130px
-      const offset = 140;
+      // Navbar (~60-64px) + TourDateHeader (~48px) + Tab navigation (~68px) = ~180px
+      const offset = 180;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -38,8 +38,8 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
   useEffect(() => {
     const handleScroll = () => {
       const sections: Section[] = ['overview', 'itinerary', 'requirements', 'pricing'];
-      // Account for navbar + tab nav height
-      const scrollPosition = window.scrollY + 180;
+      // Account for navbar + TourDateHeader + tab nav height
+      const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -100,7 +100,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
       )}
 
       {/* Tab Navigation - Sticky at its position */}
-      <div className="sticky top-[60px] md:top-[64px] z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+      <div className="sticky top-[108px] md:top-[112px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
         <div className="px-4 md:px-10 lg:px-40">
           <div className="max-w-[1200px] mx-auto">
             <ul className="flex gap-6 overflow-x-auto scrollbar-hide">
@@ -161,23 +161,23 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
       <div className="bg-white dark:bg-background-dark px-4 md:px-10 lg:px-40 py-8">
         <div className="max-w-[1200px] mx-auto space-y-16">
           {/* Overview Section */}
-          <section id="overview" className="scroll-mt-40">
+          <section id="overview" className="scroll-mt-48">
             <OverviewTab adventure={adventure} />
           </section>
 
           {/* Itinerary Section */}
-          <section id="itinerary" className="scroll-mt-40">
+          <section id="itinerary" className="scroll-mt-48">
             <ItineraryTab adventure={adventure} />
           </section>
 
           {/* Requirements Section */}
-          <section id="requirements" className="scroll-mt-40">
+          <section id="requirements" className="scroll-mt-48">
             <RequirementsSection requirements={adventure.requirements} />
           </section>
 
           {/* Pricing Section */}
           {adventure.contentSections && adventure.contentSections.length > 0 && (
-            <section id="pricing" className="scroll-mt-40">
+            <section id="pricing" className="scroll-mt-48">
               <ContentRenderer sections={adventure.contentSections.filter(
                 section => section.__component === 'adventure.pricing-section'
               )} />
