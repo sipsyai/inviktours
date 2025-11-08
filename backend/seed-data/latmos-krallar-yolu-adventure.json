@@ -1,0 +1,163 @@
+{
+  "data": {
+    "title": "Latmos Krallar Yolu ve Kutsal Göller Macera Turu",
+    "slug": "latmos-krallar-yolu-kutsal-goller-macera-turu-2026",
+    "subtitle": "Bafa Gölü'nden Efes'e 8 günlük tarihi yürüyüş macerası",
+    "description": "<p>Antik Karia ve İon mirasını keşfedin! Latmos Dağları'nda tarih öncesi kaya resimleri, Bizans manastırları ve panoramik manzaraların arasında 8 günlük unutulmaz bir yürüyüş deneyimi. Bafa Gölü'nden Pamukkale travertenlerine, Afrodisias antik kentinden Efes'e uzanan bu macera, doğa ve tarihi birleştiriyor.</p>",
+    "duration": 8,
+    "startLocation": "Bodrum Havalimanı",
+    "endLocation": "İzmir Havalimanı",
+    "tripAttributes": {
+      "style": "Doğa ve Kültür Yürüyüşü",
+      "styleDescription": "Küçük grup yürüyüş odaklı macera turu",
+      "service": "Standart",
+      "serviceDescription": "Çift kişilik standart odalar, kahvaltı dahil",
+      "physical": "Orta",
+      "physicalDescription": "Günde 3-5 saat yürüyüş, 8-12 km arası",
+      "groupType": "Küçük Grup",
+      "groupTypeDescription": "8-20 katılımcı"
+    },
+    "tripInfo": {
+      "ageRequirement": "Orta seviye kondisyon gerektiren aktiviteler için yetişkinlere uygundur",
+      "visaRequirement": "Türk vatandaşları için vize gerekmez",
+      "visaLink": ""
+    },
+    "requirements": {
+      "physicalRequirements": "<p>Orta seviye kondisyon gereklidir. Günlük 8-12 km yürüyüş, engebeli araziler ve antik kentlerdeki taş merdivenler için hazırlıklı olunmalıdır.</p>",
+      "equipment": "<ul><li>Rahat yürüyüş ayakkabıları (rodaje yapılmış)</li><li>Hafif sırt çantası (20-25 litre)</li><li>Şapka, güneş gözlüğü</li><li>Güneş kremi SPF 30+</li><li>Hafif ceket veya rüzgarlık</li><li>Tekrar kullanılabilir su şişesi</li><li>Kamera veya akıllı telefon</li><li>Akşamlar için hafif şal veya uzun kollu giysi</li></ul>",
+      "healthRequirements": "<p>Günlük yürüyüşler için orta seviye fiziksel kondisyon gereklidir. Kronik rahatsızlığı olanlar doktora danışmalıdır.</p>",
+      "experienceLevel": "<p>Doğa ve tarih meraklıları, fotoğrafçılar ve hafif macera sevenler için idealdir. Yürüyüş deneyimi tavsiye edilir ancak zorunlu değildir.</p>",
+      "importantNotes": "<ul><li>Tek kişilik oda ekstra ücret karşılığı mevcut</li><li>Öğle ve akşam yemekleri opsiyonel (tur fiyatına dahil değil)</li><li>Salda Gölü ve Çivril Gölü gezileri opsiyoneldir</li><li>Minimum katılımcı sayısı 8 kişidir</li><li>Hava koşullarına bağlı olarak rota değişiklikleri olabilir</li></ul>"
+    },
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "location": "Bafa Gölü (Kapıkırı)",
+        "summary": "Varış ve Gün Batımı Yürüyüşü",
+        "details": "<p>Bodrum Havalimanı'ndan karşılama ve Kapıkırı'ya transfer (yaklaşık 1 saat). Bafa Gölü kenarında kısa gün batımı yürüyüşü ve antik kalıntıları keşif. Yerel mutfakla tanışma akşam yemeği.</p><p><strong>Hikaye:</strong> Latmos Dağları antik Karia krallarının yolu ve Endymion efsanesinin yurduydu. Gün batımında göl kenarında bu kadim hikayelerin izlerini hissedeceksiniz.</p>",
+        "meals": "Akşam Yemeği",
+        "accommodation": "Kapıkırı Pansiyon"
+      },
+      {
+        "dayNumber": 2,
+        "location": "Bafa Gölü",
+        "summary": "Yediler Manastırı Yürüyüşü",
+        "details": "<p>Sabah Karahayıt'tan Yediler Manastırı'na yürüyüş (12 km). Tarih öncesi kaya resimlerini keşfediyoruz, Bizans dönemi manastır kalıntılarını ziyaret ediyoruz. Opsiyonel Bafa Gölü tekne turu. Akşam göl kenarında gün batımı.</p><p><strong>Keşif noktaları:</strong> 5000 yıllık kaya resimleri, Bizans manastır freskleri, panoramik Latmos manzarası.</p>",
+        "meals": "Kahvaltı",
+        "accommodation": "Kapıkırı Pansiyon"
+      },
+      {
+        "dayNumber": 3,
+        "location": "Bafa Gölü",
+        "summary": "Latmos Krallar Yolu Yürüyüşü",
+        "details": "<p>Gölyaka'dan Pınarcık yaylasına Krallar Yolu yürüyüşü (11-12 km). Antik taş merdivenler, tarih öncesi sığınaklar ve Bafa Gölü ile Latmos Dağları'nın panoramik manzarası. Piknik öğle yemeği dahil. Kapıkırı'ya dönüş.</p><p><strong>Mitoloji:</strong> Antik Karia krallarının kullandığı bu yol, ticaret ve strateji için hayati öneme sahipti. Her adımda tarihin derinliklerini hissedeceksiniz.</p>",
+        "meals": "Kahvaltı, Piknik Öğle Yemeği",
+        "accommodation": "Kapıkırı Pansiyon"
+      },
+      {
+        "dayNumber": 4,
+        "location": "Pamukkale",
+        "summary": "Bağarcık Yaylası ve Pamukkale Transferi",
+        "details": "<p>Sabah Bağarcık yaylası yürüyüşü (8-10 km). Öğleden sonra Pamukkale'ye transfer (yaklaşık 1 saat 10 dakika). Akşam travertenler veya termal spa için serbest zaman.</p><p><strong>Doğa:</strong> Bağarcık yaylası yemyeşil vadileri ve geleneksel köy yaşamını sunuyor.</p>",
+        "meals": "Kahvaltı",
+        "accommodation": "Pamukkale Otel"
+      },
+      {
+        "dayNumber": 5,
+        "location": "Pamukkale - Afrodisias",
+        "summary": "Afrodisias Antik Kenti Ziyareti",
+        "details": "<p>UNESCO Dünya Mirası Afrodisias'ı keşfediyoruz. Tiyatro, tapınaklar ve mermer atölyeleri. Pamukkale'ye dönüş, traverten yürüyüşü ve opsiyonel termal spa.</p><p><strong>Sanat Mirası:</strong> Afrodit tanrıçasının mermer atölyeleri, antik sanatın görkemli eserlerini barındırıyor.</p>",
+        "meals": "Kahvaltı",
+        "accommodation": "Pamukkale Otel"
+      },
+      {
+        "dayNumber": 6,
+        "location": "Pamukkale",
+        "summary": "Hierapolis Yürüyüşü",
+        "details": "<p>Hierapolis yürüyüşü (6-8 km): nekropol, tiyatro ve travertenler. Öğleden sonra opsiyonel Salda Gölü veya Çivril Gölü gezileri. Pamukkale'ye dönüş.</p><p><strong>Termal Miras:</strong> Hierapolis antik çağın önemli termal merkezi. Roma döneminden kalma hamamlar ve kutsal havuzları keşfedin.</p>",
+        "meals": "Kahvaltı",
+        "accommodation": "Pamukkale Otel"
+      },
+      {
+        "dayNumber": 7,
+        "location": "Şirince/Selçuk",
+        "summary": "Efes Antik Kenti ve Şirince Köyü",
+        "details": "<p>Selçuk/Şirince'ye transfer (yaklaşık 3 saat). Efes antik kentini keşfediyoruz: Celsus Kütüphanesi, Büyük Tiyatro, Artemis Tapınağı. Akşam Şirince köyünde serbest zaman, opsiyonel orman yürüyüşü.</p><p><strong>Felsefe Beşiği:</strong> İyonyalı filozof Thales'in doğduğu topraklar. Erken bilim ve felsefenin filizlendiği yerlerde yürüyün.</p>",
+        "meals": "Kahvaltı",
+        "accommodation": "Şirince Pansiyon"
+      },
+      {
+        "dayNumber": 8,
+        "location": "İzmir",
+        "summary": "Ayrılış",
+        "details": "<p>Şirince'de kahvaltı. Opsiyonel Meryem Ana Evi ziyareti. İzmir Havalimanı'na transfer (yaklaşık 50 dakika). Tur sonu.</p><p><strong>Veda:</strong> 8 günlük tarihi ve doğal macera sona eriyor. Anılarınızla dolu bir yolculuk.</p>",
+        "meals": "Kahvaltı"
+      }
+    ],
+    "contentSections": [
+      {
+        "__component": "adventure.pricing-section",
+        "title": "Maliyet & Fiyatlandırma",
+        "includedTitle": "Tur Fiyatına Dahil Olanlar",
+        "excludedTitle": "Tur Fiyatına Dahil Olmayanlar",
+        "noteTitle": "Önemli Bilgiler ve Ödeme Koşulları",
+        "includedItems": [
+          {
+            "text": "7 gece konaklama (çift kişilik standart odalar)"
+          },
+          {
+            "text": "Günlük kahvaltılar (8 kahvaltı)"
+          },
+          {
+            "text": "Profesyonel İngilizce/Türkçe konuşan rehber"
+          },
+          {
+            "text": "Tüm transferler (Bodrum Havalimanı - İzmir Havalimanı arası)"
+          },
+          {
+            "text": "Afrodisias, Efes ve Hierapolis giriş ücretleri"
+          },
+          {
+            "text": "Pamukkale travertenleri giriş ücreti"
+          },
+          {
+            "text": "Gün 3 piknik öğle yemeği"
+          },
+          {
+            "text": "Harita ve yürüyüş materyalleri"
+          },
+          {
+            "text": "24/7 acil destek hattı"
+          }
+        ],
+        "excludedItems": [
+          {
+            "text": "Uçak biletleri"
+          },
+          {
+            "text": "Öğle ve akşam yemekleri (Gün 1 akşam yemeği ve Gün 3 piknik hariç)"
+          },
+          {
+            "text": "İçecekler ve alkollü içkiler"
+          },
+          {
+            "text": "Kişisel harcamalar"
+          },
+          {
+            "text": "Seyahat sigortası (şiddetle tavsiye edilir)"
+          },
+          {
+            "text": "Tek kişilik oda ek ücreti (talep üzerine mevcut)"
+          },
+          {
+            "text": "Opsiyonel aktiviteler (Bafa Gölü tekne turu, Salda/Çivril Gölü gezileri)"
+          },
+          {
+            "text": "Bahşişler (rehber ve sürücü)"
+          }
+        ],
+        "note": "<p><strong>Ödeme Planı:</strong></p><ul><li>Rezervasyon için %30 ön ödeme gereklidir</li><li>Kalan tutar tur başlangıcından 30 gün önce ödenmelidir</li><li>Kredi kartı, banka havalesi veya nakit ödeme kabul edilir</li></ul><p><strong>İptal Politikası:</strong></p><ul><li>Tur başlangıcından 60+ gün önce: %10 kesinti ile iade</li><li>30-59 gün arası: %50 iade</li><li>30 günden az: İade yapılmaz</li><li>COVID-19 veya doğal afet nedeniyle iptal: Tam iade veya erteleme seçeneği</li></ul><p><strong>Grup İndirimleri:</strong></p><ul><li>4+ kişilik gruplar için %10 indirim</li><li>8+ kişilik gruplar için %15 indirim</li></ul><p><strong>Tek Kişilik Oda Ek Ücreti:</strong> 2.500 TL (tüm tur için)</p><p><strong>Not:</strong> Fiyatlar 2026 sezonu için geçerlidir ve değişiklik gösterebilir. Güncel fiyatlar için lütfen bizimle iletişime geçin.</p>"
+      }
+    ]
+  }
+}

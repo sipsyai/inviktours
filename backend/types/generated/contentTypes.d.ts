@@ -456,8 +456,6 @@ export interface ApiAdventureAdventure extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
-    duration: Schema.Attribute.Integer;
-    endLocation: Schema.Attribute.String;
     images: Schema.Attribute.Media<'images' | 'videos', true>;
     itinerary: Schema.Attribute.Component<'adventure.itinerary-day', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -470,7 +468,6 @@ export interface ApiAdventureAdventure extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     requirements: Schema.Attribute.Component<'adventure.requirements', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    startLocation: Schema.Attribute.String;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
@@ -479,6 +476,7 @@ export interface ApiAdventureAdventure extends Struct.CollectionTypeSchema {
       false
     >;
     tripInfo: Schema.Attribute.Component<'adventure.trip-info', false>;
+    tripSummary: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

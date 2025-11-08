@@ -67,14 +67,17 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
               <h1 className="text-[#111811] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] mb-2">
                 {adventure.title}
               </h1>
-              <h2 className="text-[#638863] dark:text-gray-400 text-lg md:text-xl">
-                {adventure.duration && adventure.startLocation && adventure.endLocation && (
-                  <>
-                    {adventure.duration} gün, {adventure.startLocation} - {adventure.endLocation}
-                  </>
-                )}
-                {adventure.subtitle && !adventure.duration && adventure.subtitle}
-              </h2>
+              {adventure.tripSummary && (
+                <div
+                  className="text-[#638863] dark:text-gray-400 text-lg md:text-xl prose prose-sm dark:prose-invert max-w-none"
+                  dangerouslySetInnerHTML={{ __html: adventure.tripSummary }}
+                />
+              )}
+              {!adventure.tripSummary && adventure.subtitle && (
+                <h2 className="text-[#638863] dark:text-gray-400 text-lg md:text-xl">
+                  {adventure.subtitle}
+                </h2>
+              )}
             </div>
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-primary text-3xl">explore</span>

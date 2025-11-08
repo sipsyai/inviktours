@@ -27,14 +27,8 @@
     "description": {
       "type": "richtext"
     },
-    "duration": {
-      "type": "integer"
-    },
-    "startLocation": {
-      "type": "string"
-    },
-    "endLocation": {
-      "type": "string"
+    "tripSummary": {
+      "type": "richtext"
     },
     "mainImage": {
       "type": "media",

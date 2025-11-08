@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-11-08T09:59:38.221Z"
+    "x-generation-date": "2025-11-08T10:18:53.570Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3173,13 +3173,7 @@
               "description": {
                 "type": "string"
               },
-              "duration": {
-                "type": "integer"
-              },
-              "startLocation": {
-                "type": "string"
-              },
-              "endLocation": {
+              "tripSummary": {
                 "type": "string"
               },
               "mainImage": {
@@ -3364,13 +3358,7 @@
           "description": {
             "type": "string"
           },
-          "duration": {
-            "type": "integer"
-          },
-          "startLocation": {
-            "type": "string"
-          },
-          "endLocation": {
+          "tripSummary": {
             "type": "string"
           },
           "mainImage": {
@@ -4153,13 +4141,7 @@
                     "description": {
                       "type": "string"
                     },
-                    "duration": {
-                      "type": "integer"
-                    },
-                    "startLocation": {
-                      "type": "string"
-                    },
-                    "endLocation": {
+                    "tripSummary": {
                       "type": "string"
                     },
                     "mainImage": {
@@ -8324,13 +8306,7 @@
               "description": {
                 "type": "string"
               },
-              "duration": {
-                "type": "integer"
-              },
-              "startLocation": {
-                "type": "string"
-              },
-              "endLocation": {
+              "tripSummary": {
                 "type": "string"
               },
               "mainImage": {

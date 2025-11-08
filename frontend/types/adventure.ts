@@ -173,9 +173,7 @@ export interface Adventure {
   slug: string;
   subtitle?: string;
   description?: string;
-  duration?: number;
-  startLocation?: string;
-  endLocation?: string;
+  tripSummary?: string;
   mainImage?: StrapiMedia;
   images?: StrapiMedia[];
   tripAttributes?: TripAttributes;
