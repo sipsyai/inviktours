@@ -60,6 +60,15 @@ export default function TourCard({ tour }: TourCardProps) {
 
   return (
     <div className="group flex flex-col rounded-xl overflow-hidden border border-[#dce5dc] dark:border-gray-700 bg-white dark:bg-background-dark/50 hover:shadow-lg transition-all duration-300">
+      {/* Trip Title */}
+      <div className="px-6 pt-6 pb-3">
+        <Link href={`/tours/${tour.slug}`}>
+          <h3 className="text-[#111811] dark:text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer hover:underline">
+            {tour.title}
+          </h3>
+        </Link>
+      </div>
+
       {/* Tour Image with Background */}
       <div
         className="relative h-72 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
@@ -70,13 +79,7 @@ export default function TourCard({ tour }: TourCardProps) {
       </div>
 
       {/* Tour Info */}
-      <div className="flex flex-col flex-1 p-6">
-        {/* Trip Title */}
-        <Link href={`/tours/${tour.slug}`}>
-          <h3 className="text-[#111811] dark:text-white text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors cursor-pointer hover:underline">
-            {tour.title}
-          </h3>
-        </Link>
+      <div className="flex flex-col flex-1 p-6 pt-4">
 
         {/* Duration and Date in Single Row */}
         {(duration || formatDateRange()) && (
