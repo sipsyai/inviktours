@@ -78,9 +78,12 @@ export default function OverviewTab({ adventure }: OverviewTabProps) {
                 className="border-l-4 border-primary pl-4 py-2"
               >
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-primary font-bold">
+                  <a
+                    href={`#day-${day.dayNumber}`}
+                    className="text-primary font-bold hover:underline hover:opacity-80 transition-opacity cursor-pointer"
+                  >
                     Gün {day.dayNumber}{day.dayRange ? ` - ${day.dayRange}` : ''}
-                  </span>
+                  </a>
                   <span className="text-[#638863] dark:text-gray-400 font-medium">
                     {day.location}
                   </span>

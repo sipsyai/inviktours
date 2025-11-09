@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Adventure } from '@/types/adventure';
 import { getStrapiMediaUrl } from '@/lib/strapi';
@@ -19,7 +19,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
   const [activeSection, setActiveSection] = useState<Section>('overview');
 
   // Scroll to section smoothly
-  const scrollToSection = (sectionId: Section) => {
+  const scrollToSection = useCallback((sectionId: Section) => {
     const element = document.getElementById(sectionId);
     if (element) {
       // Navbar (~60-64px) + TourDateHeader (~48px) + Tab navigation (~68px) = ~180px
@@ -32,7 +32,45 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
         behavior: 'smooth',
       });
     }
-  };
+  }, []);
+
+  // Handle hash navigation for itinerary days
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+
+      // If hash is for a specific day (e.g., #day-1), scroll to itinerary first, then to the day
+      if (hash.startsWith('#day-')) {
+        // First scroll to itinerary section
+        scrollToSection('itinerary');
+
+        // Then scroll to the specific day after a short delay
+        setTimeout(() => {
+          const dayElement = document.getElementById(hash.substring(1));
+          if (dayElement) {
+            // Account for sticky headers: navbar + date header + tab nav + day nav = ~240px
+            const offset = 240;
+            const elementPosition = dayElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth',
+            });
+          }
+        }, 300);
+      }
+    };
+
+    // Handle initial hash on page load
+    if (window.location.hash.startsWith('#day-')) {
+      handleHashChange();
+    }
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [scrollToSection]);
 
   // Track active section on scroll
   useEffect(() => {
