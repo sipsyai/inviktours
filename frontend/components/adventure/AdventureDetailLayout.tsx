@@ -138,7 +138,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
       )}
 
       {/* Tab Navigation - Sticky at its position */}
-      <div className="sticky top-[108px] md:top-[112px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+      <div className="sticky top-[125px] md:top-[112px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
         <div className="px-4 md:px-10 lg:px-40">
           <div className="max-w-[1200px] mx-auto">
             <ul className="flex gap-6 overflow-x-auto scrollbar-hide">

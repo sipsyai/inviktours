@@ -62,7 +62,7 @@ export default function TourDateHeader({ tour }: TourDateHeaderProps) {
 
   return (
     <div
-      className={`transition-all duration-300 sticky top-[60px] md:top-[64px] z-40 ${
+      className={`transition-all duration-300 sticky top-[49px] md:top-[64px] z-40 ${
         isSticky
           ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-lg'
           : 'bg-gradient-to-r from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20'
