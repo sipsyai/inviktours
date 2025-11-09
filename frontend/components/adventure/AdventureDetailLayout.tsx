@@ -138,14 +138,14 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
       )}
 
       {/* Tab Navigation - Sticky at its position */}
-      <div className="sticky top-[125px] md:top-[112px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+      <div className="sticky top-[97px] md:top-[112px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
         <div className="px-4 md:px-10 lg:px-40">
           <div className="max-w-[1200px] mx-auto">
-            <ul className="flex gap-6 overflow-x-auto scrollbar-hide">
+            <ul className="flex gap-1 md:gap-6 overflow-x-auto scrollbar-hide">
               <li>
                 <button
                   onClick={() => scrollToSection('overview')}
-                  className={`py-4 px-2 text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
+                  className={`py-2.5 md:py-4 px-1 md:px-2 text-xs md:text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
                     activeSection === 'overview'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-[#638863] dark:text-gray-400 hover:text-[#111811] dark:hover:text-white'
@@ -157,7 +157,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
               <li>
                 <button
                   onClick={() => scrollToSection('itinerary')}
-                  className={`py-4 px-2 text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
+                  className={`py-2.5 md:py-4 px-1 md:px-2 text-xs md:text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
                     activeSection === 'itinerary'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-[#638863] dark:text-gray-400 hover:text-[#111811] dark:hover:text-white'
@@ -169,7 +169,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
               <li>
                 <button
                   onClick={() => scrollToSection('requirements')}
-                  className={`py-4 px-2 text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
+                  className={`py-2.5 md:py-4 px-1 md:px-2 text-xs md:text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
                     activeSection === 'requirements'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-[#638863] dark:text-gray-400 hover:text-[#111811] dark:hover:text-white'
@@ -181,7 +181,7 @@ export default function AdventureDetailLayout({ adventure }: AdventureDetailLayo
               <li>
                 <button
                   onClick={() => scrollToSection('pricing')}
-                  className={`py-4 px-2 text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
+                  className={`py-2.5 md:py-4 px-1 md:px-2 text-xs md:text-base font-medium border-b-2 transition-colors whitespace-nowrap ${
                     activeSection === 'pricing'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-[#638863] dark:text-gray-400 hover:text-[#111811] dark:hover:text-white'
