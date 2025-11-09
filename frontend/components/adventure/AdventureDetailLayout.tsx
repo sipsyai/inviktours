@@ -98,45 +98,55 @@ export default function AdventureDetailLayout({ adventure, hasTourDateHeader = f
 
   return (
     <>
-      {/* Title Block */}
-      <div className="px-4 md:px-10 lg:px-40 py-6 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex-1">
-              <h1 className="text-[#111811] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] mb-2">
-                {adventure.title}
-              </h1>
-              {adventure.tripSummary && (
-                <div
-                  className="text-[#638863] dark:text-gray-400 text-lg md:text-xl prose prose-sm dark:prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: adventure.tripSummary }}
-                />
-              )}
-              {!adventure.tripSummary && adventure.subtitle && (
-                <h2 className="text-[#638863] dark:text-gray-400 text-lg md:text-xl">
-                  {adventure.subtitle}
-                </h2>
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-3xl">explore</span>
+      {/* Hero Section with Background Image */}
+      <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+        {/* Background Image */}
+        {adventure.mainImage && (
+          <>
+            <Image
+              src={getStrapiMediaUrl(adventure.mainImage.url)}
+              alt={adventure.mainImage.alternativeText || adventure.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Dark Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+          </>
+        )}
+
+        {/* Fallback background if no image */}
+        {!adventure.mainImage && (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 dark:from-primary/30 dark:to-primary/50" />
+        )}
+
+        {/* Content Overlay */}
+        <div className="relative z-10 h-full flex items-center px-4 md:px-10 lg:px-40 py-6">
+          <div className="max-w-[1200px] mx-auto w-full">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex-1">
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4 drop-shadow-lg">
+                  {adventure.title}
+                </h1>
+                {adventure.tripSummary && (
+                  <div
+                    className="text-white/95 text-lg md:text-xl prose prose-sm prose-invert max-w-none drop-shadow-md [&_p]:text-white/95 [&_strong]:text-white [&_em]:text-white/90"
+                    dangerouslySetInnerHTML={{ __html: adventure.tripSummary }}
+                  />
+                )}
+                {!adventure.tripSummary && adventure.subtitle && (
+                  <h2 className="text-white/95 text-lg md:text-xl drop-shadow-md">
+                    {adventure.subtitle}
+                  </h2>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-white drop-shadow-lg text-4xl md:text-5xl">explore</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Main Image */}
-      {adventure.mainImage && (
-        <div className="w-full h-[400px] md:h-[500px] relative overflow-hidden">
-          <Image
-            src={getStrapiMediaUrl(adventure.mainImage.url)}
-            alt={adventure.mainImage.alternativeText || adventure.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      )}
 
       {/* Tab Navigation - Sticky at its position */}
       <div className={`sticky ${hasTourDateHeader ? 'top-[97px] md:top-[112px]' : 'top-[49px] md:top-[64px]'} z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md`}>
