@@ -60,7 +60,10 @@ export default async function TourPage({ params }: PageProps) {
 
           {/* Adventure Full Details */}
           {tour.adventure && (
-            <AdventureDetailLayout adventure={tour.adventure as unknown as Adventure} />
+            <AdventureDetailLayout
+              adventure={tour.adventure as unknown as Adventure}
+              hasTourDateHeader={true}
+            />
           )}
         </main>
         <Footer />
