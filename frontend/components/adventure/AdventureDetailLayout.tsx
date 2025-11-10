@@ -3,11 +3,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Adventure } from '@/types/adventure';
+import { Tour } from '@/types/tour';
 import { getStrapiMediaUrl } from '@/lib/strapi';
 import OverviewTab from './OverviewTab';
 import ItineraryTab from './ItineraryTab';
 import RequirementsSection from './RequirementsSection';
 import ContentRenderer from './ContentRenderer';
+import DeparturesSection from './DeparturesSection';
+import BookingModal from '../tour/BookingModal';
 
 interface AdventureDetailLayoutProps {
   adventure: Adventure;
@@ -18,6 +21,25 @@ type Section = 'overview' | 'itinerary' | 'requirements' | 'pricing';
 
 export default function AdventureDetailLayout({ adventure, hasTourDateHeader = false }: AdventureDetailLayoutProps) {
   const [activeSection, setActiveSection] = useState<Section>('overview');
+  const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const handleBookingClick = useCallback((tour: Tour) => {
+    // Enrich tour with adventure data if not present
+    const enrichedTour: Tour = {
+      ...tour,
+      adventure: tour.adventure || {
+        id: adventure.id,
+        documentId: adventure.documentId,
+        title: adventure.title,
+        slug: adventure.slug,
+        subtitle: adventure.subtitle,
+        description: adventure.description,
+      },
+    };
+    setSelectedTour(enrichedTour);
+    setIsBookingModalOpen(true);
+  }, [adventure]);
 
   // Scroll to section smoothly
   const scrollToSection = useCallback((sectionId: Section) => {
@@ -232,8 +254,27 @@ export default function AdventureDetailLayout({ adventure, hasTourDateHeader = f
               )} />
             </section>
           )}
+
+          {/* Departures Section */}
+          {adventure.tours && adventure.tours.length > 0 && (
+            <section className="scroll-mt-48">
+              <DeparturesSection
+                tours={adventure.tours}
+                onBookingClick={handleBookingClick}
+              />
+            </section>
+          )}
         </div>
       </div>
+
+      {/* Booking Modal */}
+      {selectedTour && (
+        <BookingModal
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          tour={selectedTour}
+        />
+      )}
     </>
   );
 }

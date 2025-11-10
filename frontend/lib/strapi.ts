@@ -136,6 +136,9 @@ export async function getTourBySlug(slug: string): Promise<Tour | null> {
                 },
               },
             },
+            tours: {
+              fields: ['slug', 'startDate', 'endDate', 'price', 'currency'],
+            },
           },
         },
         contentSections: {
@@ -366,6 +369,9 @@ export async function getAdventureBySlug(slug: string): Promise<Adventure | null
           populate: {
             activities: true,
           },
+        },
+        tours: {
+          fields: ['slug', 'startDate', 'endDate', 'price', 'currency'],
         },
         contentSections: {
           on: {

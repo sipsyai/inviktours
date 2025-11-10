@@ -1,3 +1,5 @@
+import { Tour } from './tour';
+
 // Strapi base types
 export interface StrapiMedia {
   id: number;
@@ -181,6 +183,7 @@ export interface Adventure {
   requirements?: Requirements;
   itinerary?: ItineraryDay[];
   contentSections?: ContentSection[];
+  tours?: Tour[];
   publishedAt: string;
   createdAt: string;
   updatedAt: string;

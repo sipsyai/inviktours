@@ -162,6 +162,7 @@ export interface TourAdventure {
     accommodationDetails?: string;
   }>;
   video?: StrapiMedia;
+  tours?: Tour[];
   contentSections?: Array<{
     id: number;
     __component: string;
