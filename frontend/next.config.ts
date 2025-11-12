@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   outputFileTracingRoot: process.cwd(),
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/adventures',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
