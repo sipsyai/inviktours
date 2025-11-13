@@ -136,6 +136,7 @@ export interface AdventureItineraryDay extends Struct.ComponentSchema {
     dayNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
     dayRange: Schema.Attribute.String;
     details: Schema.Attribute.RichText;
+    images: Schema.Attribute.Media<'images', true>;
     location: Schema.Attribute.String & Schema.Attribute.Required;
     meals: Schema.Attribute.String;
     summary: Schema.Attribute.Text & Schema.Attribute.Required;

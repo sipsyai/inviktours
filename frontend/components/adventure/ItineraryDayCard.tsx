@@ -1,4 +1,6 @@
 import { ItineraryDay } from '@/types/adventure';
+import { getStrapiMediaUrl } from '@/lib/strapi';
+import Image from 'next/image';
 
 interface ItineraryDayCardProps {
   day: ItineraryDay;
@@ -34,6 +36,28 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
             className="text-[#638863] dark:text-gray-400 text-sm leading-relaxed"
             dangerouslySetInnerHTML={{ __html: day.details }}
           />
+        </div>
+      )}
+
+      {/* Images */}
+      {day.images && day.images.length > 0 && (
+        <div className="mb-4">
+          <div className="grid grid-cols-2 gap-3">
+            {day.images.map((image) => (
+              <div
+                key={image.id}
+                className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800"
+              >
+                <Image
+                  src={getStrapiMediaUrl(image.url)}
+                  alt={image.alternativeText || `Gün ${day.dayNumber} fotoğrafı`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

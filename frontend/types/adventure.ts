@@ -98,6 +98,7 @@ export interface ItineraryDay {
   meals?: string;
   accommodation?: string;
   accommodationDetails?: string;
+  images?: StrapiMedia[];
 }
 
 // Section types (Dynamic Zone components)

@@ -108,6 +108,7 @@ export async function getTourBySlug(slug: string): Promise<Tour | null> {
             itinerary: {
               populate: {
                 activities: true,
+                images: true,
               },
             },
             contentSections: {
@@ -368,6 +369,7 @@ export async function getAdventureBySlug(slug: string): Promise<Adventure | null
         itinerary: {
           populate: {
             activities: true,
+            images: true,
           },
         },
         tours: {
