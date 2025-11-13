@@ -1,194 +1,351 @@
-# CLAUDE.md
+# CLAUDE.md - Inviktours Project Guide
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Bu dosya, Claude Code'un Inviktours projesi üzerinde çalışırken kullanacağı ana rehberdir.
 
-## Project Overview
+## 📚 Dokümantasyon Yapısı
 
-Inviktours is a nature tours platform built with Next.js 15 (frontend) and Strapi 5 (backend). The application is in Turkish and manages adventures and tours with dynamic content sections.
+Bu proje, farklı kullanıcı tipleri ve görevler için modüler dokümantasyon kullanır:
 
-## Development Commands
+### Referans Dosyaları (`.claude/` klasöründe)
 
-### Frontend (Next.js)
+1. **[user-guide.md](.claude/user-guide.md)** - Teknik olmayan kullanıcılar için Strapi kullanım rehberi
+2. **[development-guide.md](.claude/development-guide.md)** - Geliştiriciler için detaylı teknik rehber
+3. **[strapi-reference.md](.claude/strapi-reference.md)** - Backend içerik yapıları ve bileşen detayları
+4. **[frontend-reference.md](.claude/frontend-reference.md)** - Frontend komponent ve tip sistemleri
+5. **[deployment-guide.md](.claude/deployment-guide.md)** - Test ve canlıya alma prosedürleri
+6. **[troubleshooting.md](.claude/troubleshooting.md)** - Yaygın sorunlar ve çözümleri
+
+---
+
+## 🎯 Görev Yönlendirme - Hangi Dosyayı Kullanmalı?
+
+### İçerik Yönetimi İstekleri (Kod Değişikliği YOK)
+**Örnek istekler:**
+- "Menüyü değiştir", "Logo güncelle"
+- "Yeni tur tarihi ekle", "Macera ekle"
+- "Fiyatları güncelle", "Resim değiştir"
+- "Anasayfa içeriğini düzenle"
+- "Program/itinerary güncelle"
+
+**→ [.claude/user-guide.md](.claude/user-guide.md) dosyasını oku**
+- Strapi admin paneli üzerinden yapılacak adımları açıkla
+- Kod değişikliği YAPMA, sadece Strapi kullanım talimatları ver
+- Kullanıcıyı adım adım yönlendir
+
+---
+
+### Yeni Özellik/Geliştirme İstekleri (Kod Değişikliği EVET)
+**Örnek istekler:**
+- "Yeni sayfa ekle", "Yeni component oluştur"
+- "Rezervasyon sistemi backend'i", "Ödeme entegrasyonu"
+- "Email bildirimleri", "Arama/filtreleme özelliği"
+- "SEO optimizasyonu", "Blog bölümü"
+
+**→ [.claude/development-guide.md](.claude/development-guide.md) ve ilgili reference'ları oku**
+- Plan oluştur (TodoWrite kullan)
+- Kod değişiklikleri yap
+- Test talimatları ver
+
+---
+
+### Teknik Soru/Açıklama İstekleri
+**Örnek istekler:**
+- "Bu component nasıl çalışıyor?"
+- "Type definitions nedir?"
+- "API nasıl çağrılıyor?"
+- "Dynamic zone pattern'i açıkla"
+
+**→ İlgili reference dosyasını oku:**
+- Backend soruları: [strapi-reference.md](.claude/strapi-reference.md)
+- Frontend soruları: [frontend-reference.md](.claude/frontend-reference.md)
+- Geliştirme soruları: [development-guide.md](.claude/development-guide.md)
+
+---
+
+### Test ve Deployment İstekleri
+**Örnek istekler:**
+- "Canlıya nasıl gönderilir?"
+- "Test nasıl yapılır?"
+- "Build hatası alıyorum"
+- "Production'a deploy et"
+
+**→ [.claude/deployment-guide.md](.claude/deployment-guide.md) dosyasını oku**
+- Adım adım test/deployment talimatları ver
+- Environment setup açıkla
+- Checklist'leri takip et
+
+---
+
+### Hata Giderme İstekleri
+**Örnek istekler:**
+- "CORS hatası alıyorum"
+- "Resimler yüklenmiyor"
+- "Build başarısız oluyor"
+- "Strapi'ye bağlanamıyorum"
+
+**→ [.claude/troubleshooting.md](.claude/troubleshooting.md) dosyasını oku**
+- Yaygın hataları kontrol et
+- Debug adımlarını uygula
+- Çözüm öner
+
+---
+
+## 🚀 Hızlı Başlangıç
+
+### Proje Hakkında
+Inviktours, doğa turları platformudur. **Next.js 15** (frontend) ve **Strapi 5** (backend) ile geliştirilmiştir. Tüm içerik **Türkçe**'dir.
+
+### Temel Komutlar
+
+**Frontend (Next.js):**
 ```bash
 cd frontend
-npm install              # Install dependencies
-npm run dev             # Start dev server with Turbopack (http://localhost:3000)
-npm run build           # Build for production with Turbopack
-npm run start           # Start production server
-npm run lint            # Run ESLint
+npm install              # Bağımlılıkları yükle
+npm run dev             # Dev server başlat (http://localhost:3000)
+npm run build           # Production build
+npm run start           # Production server
 ```
 
-### Backend (Strapi)
+**Backend (Strapi):**
 ```bash
 cd backend
-npm install              # Install dependencies
-npm run develop         # Start dev server (http://localhost:1337/admin)
-npm run start           # Start production server
-npm run build           # Build admin panel
-npm run strapi          # Access Strapi CLI
+npm install              # Bağımlılıkları yükle
+npm run develop         # Dev server başlat (http://localhost:1337/admin)
+npm run build           # Admin panel build
+npm run start           # Production server
 ```
 
-## Architecture
+### Proje Yapısı (Kısaca)
 
-### Data Model Hierarchy
+```
+inviktours/
+├── frontend/           # Next.js 15 uygulaması
+│   ├── app/           # Next.js App Router (sayfalar)
+│   ├── components/    # React bileşenleri
+│   ├── lib/           # Strapi API client
+│   └── types/         # TypeScript type definitions
+├── backend/           # Strapi 5 uygulaması
+│   ├── src/api/       # Content types (adventure, tour, home, global)
+│   └── src/components/ # Reusable components (34 adet)
+└── .claude/           # Referans dokümantasyonları
+```
 
-The application has a two-level content structure:
+---
 
-1. **Adventure** (`api::adventure.adventure`) - The template/blueprint
-   - Represents a specific adventure type (e.g., "Mount Ararat Climb")
-   - Contains static information: title, subtitle, description, images, itinerary
-   - Has components: tripAttributes, tripInfo, requirements, itinerary days
-   - Uses dynamic contentSections (hero, info-cards, timeline, gallery, pricing, contact-form)
-   - One adventure can have many tours
+## 🏗️ Mimari Özet
 
-2. **Tour** (`api::tour.tour`) - The scheduled instance
-   - Links to an Adventure via `manyToOne` relation
-   - Contains scheduling information: startDate, endDate, price, currency
-   - Inherits most content from its parent Adventure
-   - Can override contentSections from the Adventure
+### İçerik Hiyerarşisi
+```
+Adventure (Macera Şablonu)
+  ├── Temel Bilgiler (başlık, açıklama, resimler)
+  ├── Program (günlük itinerary)
+  ├── Özellikler (zorluk, süre, vb.)
+  ├── Gereksinimler (fiziksel, ekipman)
+  └── Tours (Tur Tarihleri - scheduled instances)
+       ├── Tarih aralığı (başlangıç-bitiş)
+       ├── Fiyat
+       └── İsteğe bağlı özel içerik
+```
 
-**Key Relationship**: Tour → Adventure (many-to-one). When fetching a tour, deeply populate the Adventure relation to access all adventure details.
+### Veri Akışı
+1. **Kullanıcı isteği** → Frontend Next.js
+2. **API çağrısı** → Strapi REST API
+3. **Derin populate** → Adventure + Tour + Tüm ilişkiler
+4. **ISR cache** → 60 saniye revalidation
+5. **Render** → Dynamic content sections
 
-### Dynamic Content Sections
+---
 
-Both Adventures and Tours use a dynamic zone pattern with reusable components:
+## 🎨 Dil Politikası
 
-**Adventure Components** (`backend/src/components/adventure/`):
-- `hero-section` - Hero with background image/video
-- `info-cards-section` - Display key info (duration, difficulty, etc.)
-- `timeline-section` - Event timeline
-- `gallery-section` - Image gallery
-- `pricing-section` - Pricing details with included/excluded items
-- `contact-form-section` - Contact form
-- `itinerary-day` - Day-by-day itinerary with activities
-- `trip-attributes` - Adventure attributes
-- `trip-info` - Trip metadata
-- `requirements` - Requirements and booking info
+### Türkçe İçerik (Strapi)
+- Tüm kullanıcıya görünen içerik **Türkçe** olmalı
+- Sayfa başlıkları, açıklamalar, buton metinleri
+- Hata mesajları, form etiketleri
+- Yeni içerik eklerken **mutlaka Türkçe kullan**
 
-**Tour Components** (`backend/src/components/tour/`):
-- Similar set of sections (hero, info-cards, timeline, gallery, pricing, contact-form)
-- Tours can override specific sections from their parent Adventure
+### İngilizce Kod (Next.js/Strapi)
+- Component isimleri: İngilizce
+- Function isimleri: İngilizce
+- Type definitions: İngilizce
+- Kod yorumları: İngilizce
+- Git commit mesajları: İngilizce
 
-### Frontend Architecture
+---
 
-**Data Fetching** (`frontend/lib/strapi.ts`):
-- Centralized Strapi API client using `qs` for query building
-- All API calls use ISR with 60s revalidation (1 hour for global settings)
-- Returns `null` on error for graceful build-time handling
-- Key functions:
-  - `getTourBySlug()` - Deeply populates tour with adventure and all contentSections
-  - `getAdventureBySlug()` - Fetches adventure with all relations
-  - `getToursForListing()` / `getAdventuresForListing()` - Lightweight card data
-  - `getStrapiMediaUrl()` - Converts relative media URLs to absolute
+## ⚠️ Kritik Kurallar
 
-**Type System** (`frontend/types/`):
-- `tour.ts` - Tour, Adventure (when embedded in Tour), TourCard, StrapiResponse types
-- `adventure.ts` - Adventure, AdventureCard types
-- `home.ts` - Home page content types
-- All Strapi responses use generic wrappers: `StrapiResponse<T>`, `StrapiSingleResponse<T>`
+### 1. Strapi vs Code Ayrımı
+- **Strapi değişiklikleri:** Admin panel üzerinden, kod yazmadan
+- **Kod değişiklikleri:** Yeni özellikler, layout değişiklikleri, entegrasyonlar
 
-**Routing**:
-- `/` - Home page
-- `/adventures` - Adventure listing
-- `/adventures/[slug]` - Adventure detail
-- `/tours` - Tour listing (scheduled instances)
-- `/tours/[slug]` - Tour detail (shows tour + parent adventure data)
+### 2. Her Zaman İlk Önce Oku
+- Değişiklik yapmadan önce **mutlaka** ilgili dosyayı Read tool ile oku
+- Mevcut kodu anlamadan değişiklik yapma
+- Type definitions'ı kontrol et
 
-**Components** (`frontend/components/`):
-- Organized by content type: adventure/, tour/, home/, layout/
-- Components render dynamic contentSections based on `__component` field
+### 3. Güvenlik
+- **Asla** API keys, secrets, credentials commit etme
+- Environment variables kullan
+- CORS ayarlarına dikkat et
+- SQL injection, XSS gibi güvenlik açıklarına karşı dikkatli ol
 
-### Backend Architecture
+### 4. Test Etme
+- Her değişiklikten sonra **mutlaka** local test
+- Build başarılı olmalı (`npm run build`)
+- Type errors olmamalı
+- Responsive tasarımı kontrol et
 
-**Content Types**:
-- `tour` - Tour instances with dates and pricing
-- `adventure` - Adventure templates
-- `global` - Site-wide settings (navigation, etc.)
-- `home` - Home page content
+### 5. TodoWrite Kullan
+- Karmaşık görevler için **mutlaka** TodoWrite kullan
+- Adım adım ilerlemeyi göster
+- Her adımı tamamladıkça işaretle
 
-**Database Configuration** (`backend/config/database.ts`):
-- Development: SQLite (`.tmp/data.db`)
-- Production: PostgreSQL (configured via `DATABASE_CLIENT` env var)
-- Strapi Cloud auto-provisions PostgreSQL
+---
 
-**CORS Configuration** (`backend/config/middlewares.ts`):
-- Controlled via `CORS_ORIGINS` environment variable (comma-separated)
-- Default: `http://localhost:3000`
-- Update for production deployments
-
-## Environment Variables
-
-### Backend (.env)
-Required secrets (generate with `node -e "console.log(require('crypto').randomBytes(16).toString('base64'))"`):
-- `APP_KEYS` - Multiple comma-separated keys
-- `API_TOKEN_SALT`
-- `ADMIN_JWT_SECRET`
-- `TRANSFER_TOKEN_SALT`
-- `JWT_SECRET`
-
-Database (development):
-- `DATABASE_CLIENT=postgres` (or omit for SQLite)
-- `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD`
-
-CORS:
-- `CORS_ORIGINS` - Comma-separated allowed origins
+## 🔐 Environment Variables
 
 ### Frontend (.env.local)
-- `NEXT_PUBLIC_STRAPI_URL` - Strapi base URL (e.g., `https://your-app.strapiapp.com`)
-- `NEXT_PUBLIC_STRAPI_API_URL` - Strapi API URL (e.g., `https://your-app.strapiapp.com/api`)
-
-## Strapi API Population Patterns
-
-When fetching tours or adventures, you must explicitly populate:
-
-1. **Basic relations**: `populate: { adventure: true }`
-2. **Nested relations**: `populate: { adventure: { populate: { mainImage: true } } }`
-3. **Dynamic zones**: Use `on` syntax to populate specific component types
-4. **Deep nesting**: Combine all patterns for complete data
-
-Example:
-```typescript
-populate: {
-  adventure: {
-    populate: {
-      contentSections: {
-        on: {
-          'adventure.hero-section': {
-            populate: ['backgroundImage', 'heroVideo']
-          }
-        }
-      }
-    }
-  }
-}
+```
+NEXT_PUBLIC_STRAPI_URL=https://your-app.strapiapp.com
+NEXT_PUBLIC_STRAPI_API_URL=https://your-app.strapiapp.com/api
 ```
 
-See `frontend/lib/strapi.ts` for complete population examples.
+### Backend (.env)
+```
+# Secrets (generate with node crypto)
+APP_KEYS=key1,key2,key3,key4
+API_TOKEN_SALT=...
+ADMIN_JWT_SECRET=...
+TRANSFER_TOKEN_SALT=...
+JWT_SECRET=...
 
-## Deployment
+# Database (production)
+DATABASE_CLIENT=postgres
+DATABASE_HOST=...
+DATABASE_PORT=5432
+DATABASE_NAME=...
+DATABASE_USERNAME=...
+DATABASE_PASSWORD=...
 
-### Backend (Strapi Cloud)
-1. Link GitHub repo, select `backend` directory
-2. Set environment variables (all secrets - use `node -e "console.log(require('crypto').randomBytes(16).toString('base64'))"` to generate)
-3. Strapi Cloud auto-provisions PostgreSQL
-4. After deployment, configure public permissions in Strapi Admin:
-   - Settings → Users & Permissions → Roles → Public
-   - Enable: Tour (find, findOne), Adventure (find, findOne), Global (find), Home (find), Upload (find, findOne)
+# CORS
+CORS_ORIGINS=http://localhost:3000,https://your-vercel-app.vercel.app
+```
 
-### Frontend (Vercel)
-1. Import GitHub repo
-2. Set root directory to `frontend`
-3. Set `NEXT_PUBLIC_STRAPI_URL` and `NEXT_PUBLIC_STRAPI_API_URL`
-4. Update backend CORS_ORIGINS to include Vercel domain
+**Secret oluşturma:**
+```bash
+node -e "console.log(require('crypto').randomBytes(16).toString('base64'))"
+```
 
-## Tech Stack
+---
 
-- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS 4
-- **Backend**: Strapi 5, SQLite (dev), PostgreSQL (prod)
-- **Deployment**: Vercel (frontend), Strapi Cloud (backend)
+## 📦 Tech Stack
 
-## Language and Content
+### Frontend
+- **Framework:** Next.js 15 (App Router, Turbopack)
+- **UI Library:** React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **Fonts:** Google Fonts (Geist Sans, Work Sans)
+- **Icons:** Material Symbols Outlined
 
-- All UI content and admin panel are in **Turkish**
-- Content types use English field names but display Turkish labels in the admin
-- When creating or modifying content, ensure all user-facing text is in Turkish
+### Backend
+- **CMS:** Strapi 5
+- **Database (Dev):** SQLite
+- **Database (Prod):** PostgreSQL
+- **API:** REST API
+
+### Deployment
+- **Frontend:** Vercel
+- **Backend:** Strapi Cloud
+- **ISR:** 60s revalidation for content, 3600s for global settings
+
+---
+
+## 🆘 Yardım ve Destek
+
+### Kullanıcı Türüne Göre Başlangıç Noktası
+
+**Teknik olmayan kullanıcı** (içerik yöneticisi):
+→ [.claude/user-guide.md](.claude/user-guide.md) dosyasını oku
+
+**Geliştirici** (yeni özellik ekleyecek):
+→ [.claude/development-guide.md](.claude/development-guide.md) dosyasını oku
+
+**Claude Code** (görev routing):
+→ Yukarıdaki "Görev Yönlendirme" bölümünü takip et
+
+### Ortak Görevler Hızlı Bağlantılar
+
+- Yeni macera ekle → [user-guide.md - "Yeni Macera Ekleme"](.claude/user-guide.md#yeni-macera-ekleme)
+- Tur tarihi ekle → [user-guide.md - "Yeni Tur Tarihi Ekleme"](.claude/user-guide.md#yeni-tur-tarihi-ekleme)
+- Menü değiştir → [user-guide.md - "Menü ve Logo Yönetimi"](.claude/user-guide.md#menü-ve-logo-yönetimi)
+- Yeni component ekle → [development-guide.md - "Yeni Component Ekleme"](.claude/development-guide.md#yeni-component-ekleme)
+- Deployment → [deployment-guide.md - "Production Deployment"](.claude/deployment-guide.md#production-deployment)
+- Hata çözme → [troubleshooting.md](.claude/troubleshooting.md)
+
+---
+
+## 📊 Proje Durumu
+
+### Mevcut Özellikler
+- ✅ Macera listing ve detay sayfaları
+- ✅ Tur listing ve detay sayfaları
+- ✅ Dinamik anasayfa
+- ✅ Günlük itinerary sistemi
+- ✅ Resim galerileri
+- ✅ Fiyatlandırma bölümleri
+- ✅ Rezervasyon modalı (frontend only)
+- ✅ Responsive tasarım
+- ✅ SEO-friendly (metadata)
+- ✅ ISR caching
+
+### Eksik/Gelecek Özellikler
+- ⏳ Rezervasyon backend entegrasyonu
+- ⏳ Email bildirimleri
+- ⏳ Ödeme sistemi
+- ⏳ Kullanıcı hesapları
+- ⏳ Arama ve filtreleme
+- ⏳ Çoklu dil desteği (i18n)
+- ⏳ Blog/haberler bölümü
+- ⏳ Değerlendirme ve yorumlar
+
+---
+
+## 🎓 Öğrenme Kaynakları
+
+### Kullanılan Teknolojiler Dokümantasyonları
+- [Next.js 15 Docs](https://nextjs.org/docs)
+- [Strapi 5 Docs](https://docs.strapi.io)
+- [Tailwind CSS 4](https://tailwindcss.com/docs)
+- [TypeScript](https://www.typescriptlang.org/docs)
+
+### Proje-Spesifik Dokümantasyon
+- Strapi yapıları: [.claude/strapi-reference.md](.claude/strapi-reference.md)
+- Frontend yapıları: [.claude/frontend-reference.md](.claude/frontend-reference.md)
+- Geliştirme rehberi: [.claude/development-guide.md](.claude/development-guide.md)
+
+---
+
+## 📝 Son Notlar
+
+### Claude Code İçin Önemli Hatırlatmalar
+
+1. **Her zaman doğru dosyayı oku:** Görev tipine göre yukarıdaki routing'i takip et
+2. **Strapi vs Code ayrımını koru:** İçerik değişiklikleri için kod yazma
+3. **TodoWrite kullan:** Karmaşık görevleri planla ve takip et
+4. **Test et:** Her değişiklikten sonra mutlaka test
+5. **Türkçe içerik:** Kullanıcıya görünen tüm metinler Türkçe olmalı
+6. **Güvenlik:** Secrets commit etme, güvenlik açıklarına dikkat et
+7. **Type-safe:** TypeScript type'ları kullan, any kullanma
+8. **ISR:** Değişikliklerin görünmesi için 60 saniye beklenebilir
+
+### İletişim ve Geri Bildirim
+
+Bu dokümantasyon sürekli gelişmektedir. Eklemeler ve düzeltmeler için GitHub'da issue açabilirsiniz.
+
+---
+
+**Version:** 2.0
+**Last Updated:** 2025-01-13
+**Maintainer:** Claude Code + Development Team
