@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getGlobalSettings, getStrapiMediaUrl } from '@/lib/strapi';
+import UserMenu from './UserMenu';
 
 export default async function Navbar() {
   const globalSettings = await getGlobalSettings();
@@ -68,12 +69,7 @@ export default async function Navbar() {
                 )
               ))}
             </div>
-            <Link
-              href={contactButtonUrl}
-              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-green-700 transition-colors"
-            >
-              <span className="truncate">{contactButtonText}</span>
-            </Link>
+            <UserMenu />
           </div>
         </header>
       </div>
