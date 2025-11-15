@@ -33,8 +33,8 @@ export default function BookingsPage() {
         setLoading(true);
         const data = await getUserBookings(token);
         setBookings(data);
-      } catch (err: any) {
-        setError(err.message || 'Rezervasyonlar yüklenemedi');
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Rezervasyonlar yüklenemedi');
       } finally {
         setLoading(false);
       }
@@ -57,8 +57,8 @@ export default function BookingsPage() {
       setBookings(bookings.map(b =>
         b.documentId === documentId ? { ...b, status: 'cancelled' as const } : b
       ));
-    } catch (err: any) {
-      alert(err.message || 'Rezervasyon iptal edilemedi');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Rezervasyon iptal edilemedi');
     } finally {
       setCancellingId(null);
     }

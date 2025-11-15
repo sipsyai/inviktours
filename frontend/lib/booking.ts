@@ -22,7 +22,7 @@ export interface Booking {
   };
   status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
   numberOfParticipants: number;
-  participantDetails?: any;
+  participantDetails?: ParticipantDetails;
   contactName: string;
   contactEmail: string;
   contactPhone: string;
@@ -36,6 +36,11 @@ export interface Booking {
   updatedAt: string;
 }
 
+export interface ParticipantDetails {
+  adults: number;
+  children: number;
+}
+
 export interface CreateBookingData {
   tour: number; // tour ID
   numberOfParticipants: number;
@@ -43,7 +48,7 @@ export interface CreateBookingData {
   contactEmail: string;
   contactPhone: string;
   specialRequests?: string;
-  participantDetails?: any;
+  participantDetails?: ParticipantDetails;
 }
 
 /**

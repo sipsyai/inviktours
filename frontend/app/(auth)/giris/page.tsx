@@ -25,8 +25,8 @@ export default function LoginPage() {
     try {
       await login(formData);
       router.push('/'); // Redirect to home after login
-    } catch (err: any) {
-      setError(err.message || 'Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
     } finally {
       setLoading(false);
     }

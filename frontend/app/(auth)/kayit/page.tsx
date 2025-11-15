@@ -49,8 +49,8 @@ export default function RegisterPage() {
         phone: formData.phone,
       });
       router.push('/'); // Redirect to home after registration
-    } catch (err: any) {
-      setError(err.message || 'Kayıt olunamadı. Lütfen tekrar deneyin.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Kayıt olunamadı. Lütfen tekrar deneyin.');
     } finally {
       setLoading(false);
     }

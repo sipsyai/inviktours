@@ -57,8 +57,8 @@ export default function ProfilePage() {
       });
 
       setMessage({ type: 'success', text: 'Profiliniz başarıyla güncellendi!' });
-    } catch (err: any) {
-      setMessage({ type: 'error', text: err.message || 'Profil güncellenemedi' });
+    } catch (err) {
+      setMessage({ type: 'error', text: err instanceof Error ? err.message : 'Profil güncellenemedi' });
     } finally {
       setLoading(false);
     }

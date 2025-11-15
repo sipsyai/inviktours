@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Tour } from '@/types/tour';
+import { useAuth } from '@/contexts/AuthContext';
+import { createBooking } from '@/lib/booking';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -10,6 +13,9 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ isOpen, onClose, tour }: BookingModalProps) {
+  const router = useRouter();
+  const { user, isAuthenticated, token } = useAuth();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +24,22 @@ export default function BookingModal({ isOpen, onClose, tour }: BookingModalProp
     children: 0,
     message: '',
   });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  // Pre-fill form with user data if authenticated
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        name: `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.username,
+        email: user.email,
+        phone: user.phone || prev.phone,
+      }));
+    }
+  }, [user]);
 
   // Close modal on ESC key
   useEffect(() => {
@@ -36,12 +58,54 @@ export default function BookingModal({ isOpen, onClose, tour }: BookingModalProp
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement booking submission
-    console.log('Booking data:', formData);
-    alert('Rezervasyon talebiniz alındı! En kısa sürede size dönüş yapacağız.');
-    onClose();
+    setError('');
+
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      if (confirm('Rezervasyon yapmak için giriş yapmanız gerekiyor. Giriş sayfasına yönlendirilmek ister misiniz?')) {
+        router.push('/giris');
+      }
+      return;
+    }
+
+    if (!token) {
+      setError('Oturum bulunamadı. Lütfen tekrar giriş yapın.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const totalParticipants = parseInt(formData.adults.toString()) + parseInt(formData.children.toString());
+
+      await createBooking(token, {
+        tour: tour.id,
+        numberOfParticipants: totalParticipants,
+        contactName: formData.name,
+        contactEmail: formData.email,
+        contactPhone: formData.phone,
+        specialRequests: formData.message || undefined,
+        participantDetails: {
+          adults: formData.adults,
+          children: formData.children,
+        },
+      });
+
+      setSuccess(true);
+
+      // Redirect to bookings page after 2 seconds
+      setTimeout(() => {
+        router.push('/rezervasyonlarim');
+        onClose();
+      }, 2000);
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Rezervasyon oluşturulamadı. Lütfen tekrar deneyin.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -88,7 +152,39 @@ export default function BookingModal({ isOpen, onClose, tour }: BookingModalProp
 
         {/* Scrollable Content */}
         <div className="overflow-y-auto max-h-[calc(90vh-80px)] md:max-h-[calc(85vh-80px)]">
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          {/* Success Message */}
+          {success && (
+            <div className="p-6">
+              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 text-center">
+                <div className="flex justify-center mb-4">
+                  <span className="material-symbols-outlined text-6xl text-green-600">check_circle</span>
+                </div>
+                <h3 className="text-2xl font-bold text-green-800 dark:text-green-200 mb-2">
+                  Rezervasyon Oluşturuldu!
+                </h3>
+                <p className="text-green-700 dark:text-green-300 mb-4">
+                  Rezervasyon talebiniz başarıyla alındı. Rezervasyonlarım sayfasına yönlendiriliyorsunuz...
+                </p>
+                <div className="flex items-center justify-center gap-2 text-green-600">
+                  <span className="material-symbols-outlined animate-spin">progress_activity</span>
+                  <span>Yönlendiriliyor...</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Form */}
+          {!success && (
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              {/* Error Message */}
+              {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 px-4 py-3 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined">error</span>
+                    <p className="text-sm">{error}</p>
+                  </div>
+                </div>
+              )}
             {/* Tour Info Card */}
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
               <div className="grid grid-cols-2 gap-4 text-sm">
@@ -268,16 +364,30 @@ export default function BookingModal({ isOpen, onClose, tour }: BookingModalProp
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary to-green-600 hover:from-green-600 hover:to-primary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-primary to-green-600 hover:from-green-600 hover:to-primary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              <span className="material-symbols-outlined">check_circle</span>
-              Rezervasyon Talebi Gönder
+              {loading ? (
+                <>
+                  <span className="material-symbols-outlined animate-spin">progress_activity</span>
+                  Rezervasyon Oluşturuluyor...
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined">check_circle</span>
+                  {isAuthenticated ? 'Rezervasyon Yap' : 'Giriş Yap ve Rezervasyon Yap'}
+                </>
+              )}
             </button>
 
             <p className="text-xs text-center text-gray-500 dark:text-gray-400">
-              Rezervasyon talebinizi aldıktan sonra en kısa sürede size dönüş yapacağız.
+              {isAuthenticated
+                ? 'Rezervasyonunuz onaylandıktan sonra email ile bilgilendirileceksiniz.'
+                : 'Rezervasyon yapmak için giriş yapmanız gerekmektedir.'
+              }
             </p>
           </form>
+          )}
         </div>
       </div>
     </div>
