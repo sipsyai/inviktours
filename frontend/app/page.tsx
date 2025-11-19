@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
 import StatsSection from '@/components/home/StatsSection';
 import FeaturedToursSection from '@/components/home/FeaturedToursSection';
+import UpcomingToursSection from '@/components/home/UpcomingToursSection';
 import FeaturesSection from '@/components/home/FeaturesSection';
 import CTASection from '@/components/home/CTASection';
 import type {
@@ -71,6 +72,8 @@ export default async function HomePage() {
                           </div>
                         )
                       }
+                      {/* Upcoming Tours Section */}
+                      <UpcomingToursSection tours={tours} />
                     </div>
                   );
 
