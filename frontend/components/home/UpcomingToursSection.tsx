@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Tour } from '@/types/tour';
+import { TourCard } from '@/types/tour';
 import { getStrapiMediaUrl } from '@/lib/strapi';
 
 interface UpcomingToursSectionProps {
-  tours: Tour[];
+  tours: TourCard[];
 }
 
 export default function UpcomingToursSection({ tours }: UpcomingToursSectionProps) {
@@ -41,12 +41,7 @@ export default function UpcomingToursSection({ tours }: UpcomingToursSectionProp
 
         {/* Tours Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {upcomingTours.map((tour) => {
-            const backgroundImage = tour.adventure?.contentSections?.find(
-              (section: any) => section.__component === 'adventure.hero-section'
-            )?.backgroundImage;
-
-            return (
+          {upcomingTours.map((tour) => (
               <Link
                 key={tour.id}
                 href={`/tours/${tour.slug}`}
@@ -54,10 +49,10 @@ export default function UpcomingToursSection({ tours }: UpcomingToursSectionProp
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
-                  {backgroundImage ? (
+                  {tour.heroImage ? (
                     <Image
-                      src={getStrapiMediaUrl(backgroundImage.url)}
-                      alt={tour.adventure?.title || 'Tour'}
+                      src={getStrapiMediaUrl(tour.heroImage.url)}
+                      alt={tour.title || 'Tour'}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
@@ -78,7 +73,7 @@ export default function UpcomingToursSection({ tours }: UpcomingToursSectionProp
                 {/* Content */}
                 <div className="p-5">
                   <h3 className="text-xl font-bold text-[#111811] dark:text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                    {tour.title || tour.adventure?.title || 'Tur'}
+                    {tour.title || 'Tur'}
                   </h3>
 
                   {/* Dates */}
@@ -110,8 +105,7 @@ export default function UpcomingToursSection({ tours }: UpcomingToursSectionProp
                   </div>
                 </div>
               </Link>
-            );
-          })}
+          ))}
         </div>
 
         {/* View All Link */}
